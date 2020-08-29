@@ -1,0 +1,18 @@
+---
+version: "2"
+services:
+  gmvault-foobar:
+    image: docker.pkg.github.com/michal-b-kaminski/docker-gmvault/gmvault
+    container_name: gmvault-foobar
+    environment:
+      - GMVAULT_EMAIL_ADDRESS=xxx@gmail.com
+      - GMVAULT_SEND_REPORTS_TO=xxx@gmail.com
+      - GMVAULT_TIMEZONE=Europe/Warsaw
+      - GMVAULT_OPTIONS=--emails-only
+      - GMVAULT_UID=1001
+      - GMVAULT_GID=1001
+        #      - GMVAULT_SYNC_ON_STARTUP=yes
+    volumes:
+      - /media/Backup/gmvault/xxx:/data
+      - /home/majkel/docker/gmvault/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+    restart: "unless-stopped"
